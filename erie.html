@@ -9,6 +9,18 @@
         .history-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(148, 163, 184, 0.2); padding: 50px; border-radius: 20px; backdrop-filter: blur(10px); text-align: center; max-width: 700px; margin: 20px; }
         h1 { color: white; border-bottom: 2px solid var(--accent-orange); display: inline-block; padding-bottom: 10px; }
         .chef-note { font-style: italic; color: var(--accent-orange); margin-top: 20px; display: block; }
+        
+        /* Matching the subtle citation style from your main page */
+        .spec-source { 
+            display: block; 
+            font-size: 0.75rem; 
+            color: #64748b; 
+            margin-top: 25px; 
+            font-style: normal; 
+            opacity: 0.6;
+            line-height: 1.4;
+        }
+
         .btn-group { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
         .nav-btn { padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
         .btn-next { background: var(--accent-orange); color: white; }
@@ -19,7 +31,14 @@
     <div class="history-card">
         <h1>THE ERIE CANAL</h1>
         <p>Opened in 1825, the Erie Canal was the "Great Recipe" for American commerce. It connected the Atlantic Ocean to the Great Lakes, cutting transport costs by 95% and turning New York City into a global port.</p>
+        
         <span class="chef-note">Chef's Note: Engineers "cooked" 83 different stone locks to help boats climb 565 feet of elevation!</span>
+
+        <span class="spec-source">
+            Source: American Society of Civil Engineers. (n.d.). Erie Canal. ASCE National Historic Civil Engineering Landmarks. 
+            <br>Bernstein, P. L. (2005). Wedding of the waters: The Erie Canal and the making of a great nation. W.W. Norton & Company.
+        </span>
+
         <div class="btn-group">
             <a href="index.html" class="nav-btn btn-home">RETURN TO MENU</a>
             <a href="giza.html" class="nav-btn btn-next">NEXT DISH →</a>
