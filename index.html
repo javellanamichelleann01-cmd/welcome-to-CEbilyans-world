@@ -6,10 +6,11 @@
     <style>
         :root {
             --primary-dark: #020617; 
-            --accent-orange: #ff7e5f; 
+            --accent-orange: #fb923c; /* Modern Safety Orange */
             --glass-bg: rgba(255, 255, 255, 0.96);
             --yale-blue: #00356B; 
             --grayish-blue: #94a3b8; 
+            --steel-silver: #cbd5e1;
         }
 
         body { 
@@ -24,20 +25,63 @@
             z-index: -1; background: linear-gradient(180deg, #020617 0%, #0f172a 100%);
         }
 
-        /* --- HERO --- */
-        .hero { height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        #canvas3d { width: 90px; height: 90px; margin-bottom: 25px; transform-style: preserve-3d; animation: rotateCube 18s linear infinite; position: relative; }
-        .cube-face { position: absolute; width: 90px; height: 90px; border: 2.5px solid var(--accent-orange); background: rgba(255, 126, 95, 0.1); }
-        .front { transform: translateZ(45px); } .back { transform: rotateY(180deg) translateZ(45px); }
-        .right { transform: rotateY(90deg) translateZ(45px); } .left { transform: rotateY(-90deg) translateZ(45px); }
-        .top { transform: rotateX(90deg) translateZ(45px); } .bottom { transform: rotateX(-90deg) translateZ(45px); }
-        @keyframes rotateCube { from { transform: rotateX(0) rotateY(0); } to { transform: rotateX(360deg) rotateY(360deg); } }
+        /* --- HERO: Adjusted Height --- */
+        .hero { 
+            height: 65vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+        }
+
+        /* --- NEW HARD HAT STYLING --- */
+        #hard-hat-container { 
+            width: 140px; height: 100px; margin-bottom: 35px; 
+            position: relative; 
+            animation: floatHat 4s ease-in-out infinite; 
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .hard-hat-icon {
+            width: 100px; height: 50px;
+            background: #ffffff;
+            border-radius: 100px 100px 10px 10px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.25);
+        }
+
+        /* The silver brim */
+        .hard-hat-icon::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: -15px;
+            width: 130px; height: 8px;
+            background: var(--steel-silver); 
+            border-radius: 5px;
+        }
+
+        /* The reinforced ridge with "Gleam" */
+        .hard-hat-icon::before {
+            content: '';
+            position: absolute;
+            top: -5px; left: 35px;
+            width: 30px; height: 15px;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            border-radius: 50% 50% 0 0;
+            box-shadow: inset -1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        @keyframes floatHat { 
+            0%, 100% { transform: translateY(0) rotate(-2deg); } 
+            50% { transform: translateY(-20px) rotate(2deg); } 
+        }
+
         .hero h1 { font-size: 2.8rem; color: white; margin: 0; letter-spacing: 3px; }
         .hero p { color: var(--grayish-blue); letter-spacing: 2px; font-weight: 800; margin-top: 10px; }
 
         .container { max-width: 1000px; margin: -30px auto 60px; padding: 0 20px; }
 
-        /* General Header Centering */
         h2 {
             text-align: center;
             margin: 0 auto 15px auto;
@@ -52,110 +96,62 @@
             line-height: 1.8; text-align: center; backdrop-filter: blur(10px);
         }
 
-        /* --- THE MENU: 2 PER LINE --- */
         .main-menu-card {
             background: var(--glass-bg); padding: 25px; border-radius: 15px; margin-bottom: 25px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.4); color: var(--yale-blue);
         }
 
         .menu-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 20px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;
         }
 
         .menu-sub-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-top: 4px solid var(--accent-orange);
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            justify-content: center;
+            background: white; border: 1px solid #e2e8f0;
+            border-top: 4px solid var(--yale-blue); /* Professional Blue */
+            padding: 20px; border-radius: 10px; font-size: 0.95rem;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
         }
 
-        /* --- SPECIALTY CARD --- */
         .card { 
-            background: var(--glass-bg); 
-            padding: 25px; 
-            border-radius: 15px; 
-            margin-bottom: 25px; 
-            color: var(--yale-blue); 
-            cursor: pointer; 
-            transition: 0.3s;
+            background: var(--glass-bg); padding: 25px; border-radius: 15px; 
+            margin-bottom: 25px; color: var(--yale-blue); cursor: pointer; transition: 0.3s;
         }
 
-        .card-content { 
-            display: none; /* Hidden by default */
-            margin-top: 20px; 
-            text-align: left;
-        }
-
-        /* This class makes the content appear */
-        .card.is-open .card-content { 
-            display: block !important; 
-        }
+        .card-content { display: none; margin-top: 20px; text-align: left; }
+        .card.is-open .card-content { display: block !important; }
 
         .spec-item { margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .spec-trigger { color: var(--accent-orange); font-weight: bold; cursor: pointer; text-decoration: underline; display: block; margin-bottom: 5px; }
+        .spec-trigger { color: var(--yale-blue); font-weight: bold; cursor: pointer; text-decoration: underline; display: block; margin-bottom: 5px; }
         .spec-reveal { display: none; padding: 10px 0 0 15px; font-size: 0.95rem; color: #475569; }
-        .marvel { margin-bottom: 5px; }
-
+        
         .spec-reveal p {
-    font-size: 0.85rem;
-    font-style: italic;
-    color: #64748b;
-    margin-bottom: 10px;
-    border-left: 2px solid var(--accent-orange);
-    padding-left: 10px;
-}
+            font-size: 0.85rem; font-style: italic; color: #64748b; margin-bottom: 10px;
+            border-left: 2px solid var(--yale-blue); padding-left: 10px;
+        }
 
-        .spec-source {
-    display: block;
-    font-size: 0.75rem;
-    color: #64748b;
-    margin-top: 10px;
-    font-style: normal;
-    opacity: 0.6; /* Makes it very subtle */
-}
+        .spec-source { display: block; font-size: 0.75rem; color: #64748b; margin-top: 10px; opacity: 0.6; }
 
-        /* --- GALLERY --- */
         .gallery-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr; 
-            gap: 20px;
-            margin-top: 20px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;
         }
         .gallery-item {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            aspect-ratio: 1 / 1; 
-            background: #0f172a;
-            transition: 0.3s;
+            position: relative; border-radius: 12px; overflow: hidden;
+            aspect-ratio: 1 / 1; background: #0f172a; transition: 0.3s;
         }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
         .gallery-caption {
-            position: absolute; bottom: 0; width: 100%;
-            background: rgba(0, 53, 107, 0.9); color: white;
-            padding: 12px; font-size: 1rem; text-align: center; font-weight: bold;
+            position: absolute; bottom: 0; width: 100%; background: rgba(0, 53, 107, 0.9); 
+            color: white; padding: 12px; font-size: 1rem; text-align: center; font-weight: bold;
         }
 
-        /* --- FOOTER & BUTTONS --- */
         .video-section { text-align: center; margin: 50px 0; }
         .video-btn {
             background: var(--accent-orange); color: white; padding: 18px 35px; border-radius: 50px;
             text-decoration: none; font-weight: bold; transition: 0.3s; display: inline-block;
         }
-        .contact-footer { background: #020617; color: var(--grayish-blue); padding: 50px 20px; text-align: center; border-top: 4px solid var(--accent-orange); }
+        .contact-footer { background: #020617; color: var(--grayish-blue); padding: 50px 20px; text-align: center; border-top: 4px solid var(--yale-blue); }
         .contact-footer a { color: var(--accent-orange); text-decoration: none; }
 
-        /* MOBILE FIXES */
         @media (max-width: 650px) {
             .menu-row, .gallery-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2rem; }
@@ -167,10 +163,8 @@
     <canvas id="bg-canvas"></canvas>
 
     <section class="hero">
-        <div id="canvas3d">
-            <div class="cube-face front"></div><div class="cube-face back"></div>
-            <div class="cube-face right"></div><div class="cube-face left"></div>
-            <div class="cube-face top"></div><div class="cube-face bottom"></div>
+       <div id="hard-hat-container">
+            <div class="hard-hat-icon"></div>
         </div>
         <h1>CEB1LYANS</h1>
         <p>“WE COOKED, WE SERVED”</p>
@@ -188,10 +182,10 @@
         <div class="main-menu-card">
             <h2>THE MENU</h2>
             <div class="menu-row">
-                <div class="menu-sub-card"><b>STRUCTURAL STREAKS</b>Steel and concrete skeletons built for high-stress and seismic resistance.</div>
-                <div class="menu-sub-card"><b>BLUEPRINT BROTH</b>CAD and BIM modeling that defines the flavor and precision of the site.</div>
-                <div class="menu-sub-card"><b>URBAN STIR-FRY</b>A mix of highways, drainage, and utility networks for smart city logistics.</div>
-                <div class="menu-sub-card"><b>FOUNDATION FLUMBE</b>Geotechnical soil mechanics and deep-pile design for absolute stability.</div>
+                <div class="menu-sub-card"><strong style="color: var(--yale-blue); display: block; margin-bottom: 5px;">STRUCTURAL STREAKS</strong>Steel and concrete skeletons built for high-stress and seismic resistance.</div>
+                <div class="menu-sub-card"><strong style="color: var(--yale-blue); display: block; margin-bottom: 5px;">BLUEPRINT BROTH</strong>CAD and BIM modeling that defines the flavor and precision of the site.</div>
+                <div class="menu-sub-card"><strong style="color: var(--yale-blue); display: block; margin-bottom: 5px;">URBAN STIR-FRY</strong>A mix of highways, drainage, and utility networks for smart city logistics.</div>
+                <div class="menu-sub-card"><strong style="color: var(--yale-blue); display: block; margin-bottom: 5px;">FOUNDATION FLAMBÉ</strong>Geotechnical soil mechanics and deep-pile design for absolute stability.</div>
             </div>
         </div>
 
@@ -263,13 +257,13 @@
                 <div class="spec-item">
                     <span class="spec-trigger" onclick="toggleSubItem('s6', event)">Environmental and Energy Engineering</span>
                     <div id="s6" class="spec-reveal">
-                    <p><strong> involves the integration of environmental protection and energy resource management. It focuses on reducing the environmental footprint of energy systems and improving the sustainability of natural resource extraction and consumption (Davis & Masten, 2020). </strong></p>
+                        <p><strong>Involves the integration of environmental protection and energy resource management. It focuses on reducing the environmental footprint of energy systems and improving the sustainability of natural resource extraction and consumption (Davis & Masten, 2020).</strong></p>
                         <div class="marvel"><b>Bhadla Solar Park:</b> World's largest renewable farm.</div>
                         <div class="marvel"><b>Thames Barrier:</b> London's tidal surge protection.</div>
                         <div class="marvel"><b>Itaipu Dam:</b> Clean energy global leader.</div>
-                        <div class="marvel"><b>Gansu Wind Farm:</b> Massive-scale wind energy production.</div> <span class="spec-source">Source: Davis, M. L., & Masten, S. J. (2020). Principles of environmental engineering & science. McGraw-Hill Education.</span>
+                        <div class="marvel"><b>Gansu Wind Farm:</b> Massive-scale wind energy production.</div> 
                         <span class="spec-source">Source: Davis, M. L., & Masten, S. J. (2020). Principles of environmental engineering & science. McGraw-Hill Education.</span>
-                       <span class="spec-source">Marvel Source: International Hydropower Association. (2023). Itaipu Binacional: Global renewable energy leadership.</span>
+                        <span class="spec-source">Marvel Source: International Hydropower Association. (2023). Itaipu Binacional: Global renewable energy leadership.</span>
                     </div>
                 </div>
             </div>
