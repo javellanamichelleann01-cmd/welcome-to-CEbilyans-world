@@ -140,8 +140,16 @@
         }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
         .gallery-caption {
-            position: absolute; bottom: 0; width: 100%; background: rgba(0, 53, 107, 0.9); 
-            color: white; padding: 12px; font-size: 1rem; text-align: center; font-weight: bold;
+            position: absolute; 
+            bottom: 0; 
+            width: 100%; 
+            background: rgba(0, 53, 107, 0.9); 
+            color: white; 
+            padding: 12px; 
+            font-size: 1rem; 
+            text-align: center; 
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* Adds depth */
         }
 
         .video-section { text-align: center; margin: 50px 0; }
@@ -181,12 +189,24 @@
 
         <div class="main-menu-card">
             <h2>THE MENU</h2>
-            <div class="menu-row">
-                <div class="menu-sub-card"><strong style="color: var(--yale-blue); display: block; margin-bottom: 5px;">STRUCTURAL STREAKS</strong>Steel and concrete skeletons built for high-stress and seismic resistance.</div>
-                <div class="menu-sub-card"><strong style="color: var(--yale-blue); display: block; margin-bottom: 5px;">BLUEPRINT BROTH</strong>CAD and BIM modeling that defines the flavor and precision of the site.</div>
-                <div class="menu-sub-card"><strong style="color: var(--yale-blue); display: block; margin-bottom: 5px;">URBAN STIR-FRY</strong>A mix of highways, drainage, and utility networks for smart city logistics.</div>
-                <div class="menu-sub-card"><strong style="color: var(--yale-blue); display: block; margin-bottom: 5px;">FOUNDATION FLAMBÉ</strong>Geotechnical soil mechanics and deep-pile design for absolute stability.</div>
+           <div class="menu-row">
+            <div class="menu-sub-card">
+                <strong style="color: var(--yale-blue); display: block; margin-bottom: 5px; font-size: 1.1rem;">STRUCTURAL STREAKS</strong>
+                Steel and concrete skeletons built for high-stress and seismic resistance.
             </div>
+            <div class="menu-sub-card">
+                <strong style="color: var(--yale-blue); display: block; margin-bottom: 5px; font-size: 1.1rem;">BLUEPRINT BROTH</strong>
+                CAD and BIM modeling that defines the flavor and precision of the site.
+            </div>
+            <div class="menu-sub-card">
+                <strong style="color: var(--yale-blue); display: block; margin-bottom: 5px; font-size: 1.1rem;">URBAN STIR-FRY</strong>
+                A mix of highways, drainage, and utility networks for smart city logistics.
+            </div>
+            <div class="menu-sub-card">
+                <strong style="color: var(--yale-blue); display: block; margin-bottom: 5px; font-size: 1.1rem;">FOUNDATION FLAMBÉ</strong>
+                Geotechnical soil mechanics and deep-pile design for absolute stability.
+            </div>
+        </div>
         </div>
 
         <div class="card" onclick="toggleMainCard(this)">
