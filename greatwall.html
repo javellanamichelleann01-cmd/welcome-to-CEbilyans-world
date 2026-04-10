@@ -4,53 +4,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Great Wall | History</title>
     <style>
-        :root { --primary-dark: #020617; --accent-orange: #ff7e5f; --yale-blue: #00356B; --grayish-blue: #94a3b8; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--primary-dark); color: var(--grayish-blue); display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .history-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(148, 163, 184, 0.2); padding: 50px; border-radius: 20px; backdrop-filter: blur(10px); text-align: center; max-width: 700px; margin: 20px; }
-        h1 { color: white; border-bottom: 2px solid var(--accent-orange); display: inline-block; padding-bottom: 10px; }
-        .chef-note { font-style: italic; color: var(--accent-orange); margin-top: 20px; display: block; }
-        
-        /* Subtle citation style matching your other pages */
+        :root { 
+            --primary-dark: #020617; 
+            --accent-orange: #ff7e5f; 
+            --yale-blue: #00356B; 
+            --grayish-blue: #94a3b8; 
+        }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            background: var(--primary-dark); 
+            color: var(--grayish-blue); 
+            /* Allows natural scrolling on phone screens */
+            display: block; 
+            overflow-x: hidden;
+        }
+
+        .history-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid rgba(148, 163, 184, 0.2); 
+            padding: 40px 25px; 
+            border-radius: 20px; 
+            backdrop-filter: blur(10px); 
+            text-align: center; 
+            max-width: 700px; 
+            /* Centers the card while allowing it to grow */
+            margin: 40px auto; 
+            width: 92%; 
+            box-sizing: border-box;
+        }
+
+        h1 { 
+            color: white; 
+            border-bottom: 2px solid var(--accent-orange); 
+            display: inline-block; 
+            padding-bottom: 10px; 
+            font-size: 1.8rem;
+        }
+
+        p { 
+            line-height: 1.8; 
+            text-align: justify; 
+            font-size: 1rem;
+        }
+
+        ul { 
+            text-align: left; 
+            line-height: 1.8; 
+            padding-left: 20px; 
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
         .spec-source { 
             display: block; 
             font-size: 0.75rem; 
             color: #64748b; 
             margin-top: 25px; 
-            font-style: normal; 
             opacity: 0.6;
+            text-align: left;
             line-height: 1.4;
         }
 
-        .btn-group { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
-        .nav-btn { padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-group { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-top: 40px; 
+        }
+
+        .nav-btn { 
+            padding: 12px 20px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            font-size: 0.9rem;
+            flex: 1;
+            max-width: 220px;
+            text-align: center;
+        }
+
         .btn-next { background: var(--accent-orange); color: white; }
         .btn-home { border: 1px solid var(--grayish-blue); color: var(--grayish-blue); }
+
+        /* --- MOBILE FIXES --- */
+        @media (max-width: 500px) {
+            .history-card {
+                padding: 25px 15px;
+                margin: 20px auto;
+            }
+            h1 { font-size: 1.4rem; }
+            .btn-group { 
+                flex-direction: column; 
+                align-items: center;
+            }
+            .nav-btn {
+                width: 100%;
+                max-width: none;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="history-card">
         <h1>THE GREAT WALL OF CHINA</h1>
-        <p style="color: var(--accent-orange); font-weight: bold; margin-bottom: 10px;">A Monument to Terrain-Integrated Defense Infrastructure</p>
+        <p style="color: var(--accent-orange); font-weight: bold; margin-bottom: 15px;">A Monument to Terrain-Integrated Defense Infrastructure</p>
         
-        <p style="line-height: 1.8; text-align: justify;">
-            Spanning over 13,000 miles, the Great Wall was a multi-generational project that utilized regional topography as a strategic advantage. It is a landmark of geotechnical engineering, demonstrating how early builders adapted construction methods to diverse environments—from steep mountain ridges to arid desert landscapes.
+        <p>
+            Spanning over 13,000 miles, the Great Wall utilized regional topography as a strategic advantage. It is a landmark of geotechnical engineering, demonstrating how early builders adapted construction methods to diverse environments—from steep mountain ridges to arid desert landscapes.
         </p>
 
         <h3 style="color: white; margin-top: 30px; border-left: 3px solid var(--accent-orange); padding-left: 15px; text-align: left;">Technical Challenges & Innovation</h3>
-        <ul style="text-align: left; line-height: 1.8; padding-left: 20px;">
-            <li><b>Material Adaptation:</b> Engineers didn't use a "one-size-fits-all" approach. They used <b>rammed earth</b> in the plains, <b>quarried stone</b> in the mountains, and <b>fired bricks</b> in later sections, optimizing local resources for structural integrity.</li>
-            <li><b>The Sticky Rice Breakthrough:</b> Builders mixed a sticky rice soup with slaked lime to create a powerful mortar. The amylopectin in the rice helped create a compact microstructure, making the wall highly resistant to earthquakes and weathering (Fu et al., 2010).</li>
-            <li><b>Topographical Integration:</b> The wall follows the "highest line" of the terrain, acting as a natural retaining wall that utilizes the steepness of the mountains to prevent the use of heavy siege equipment.</li>
+        <ul>
+            <li><b>Material Adaptation:</b> Builders utilized <b>rammed earth</b> in the plains and <b>quarried stone</b> in the mountains, optimizing local resources for structural integrity.</li>
+            <li><b>The Sticky Rice Breakthrough:</b> A mixture of sticky rice soup and slaked lime created a mortar highly resistant to earthquakes and weathering.</li>
+            <li><b>Topographical Integration:</b> The wall acts as a natural retaining structure, utilizing steep mountain terrain to prevent the approach of heavy siege equipment.</li>
         </ul>
-
-        <span class="tech-insight">
-            The Great Wall teaches us that the best engineering solutions are those that respect and utilize the existing natural environment.
-        </span>
 
         <div class="spec-source">
             <strong>References:</strong><br>
-            Fu, W., et al. (2010). <i>Study of sticky rice-lime mortar for the restoration of historical masonry</i>. Accounts of Chemical Research.<br>
-            National Geographic Society. (2023). <i>Great Wall of China: Construction and History</i>. National Geographic Education.
+            Fu, W., et al. (2010). <i>Study of sticky rice-lime mortar</i>. Accounts of Chemical Research.<br>
+            National Geographic Society. (2023). <i>Great Wall of China: Construction and History</i>.
         </div>
 
         <div class="btn-group">
