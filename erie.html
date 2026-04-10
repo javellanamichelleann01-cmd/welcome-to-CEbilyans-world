@@ -4,13 +4,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Erie Canal | History</title>
     <style>
-        :root { --primary-dark: #020617; --accent-orange: #ff7e5f; --yale-blue: #00356B; --grayish-blue: #94a3b8; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--primary-dark); color: var(--grayish-blue); display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .history-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(148, 163, 184, 0.2); padding: 50px; border-radius: 20px; backdrop-filter: blur(10px); text-align: center; max-width: 700px; margin: 20px; }
-        h1 { color: white; border-bottom: 2px solid var(--accent-orange); display: inline-block; padding-bottom: 10px; }
-        .chef-note { font-style: italic; color: var(--accent-orange); margin-top: 20px; display: block; }
-        
-        /* Matching the subtle citation style from your main page */
+        :root { 
+            --primary-dark: #020617; 
+            --accent-orange: #ff7e5f; 
+            --yale-blue: #00356B; 
+            --grayish-blue: #94a3b8; 
+        }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            background: var(--primary-dark); 
+            color: var(--grayish-blue); 
+            /* Changed from Flex-Center to allow natural scrolling on mobile */
+            display: block; 
+            overflow-x: hidden;
+        }
+
+        .history-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid rgba(148, 163, 184, 0.2); 
+            padding: 40px 30px; /* Reduced padding for mobile */
+            border-radius: 20px; 
+            backdrop-filter: blur(10px); 
+            text-align: center; 
+            max-width: 700px; 
+            /* Centering the card with margins */
+            margin: 40px auto; 
+            width: 90%; /* Ensures it doesn't touch the screen edges on phone */
+            box-sizing: border-box;
+        }
+
+        h1 { 
+            color: white; 
+            border-bottom: 2px solid var(--accent-orange); 
+            display: inline-block; 
+            padding-bottom: 10px; 
+            font-size: 1.8rem; /* Scaled down for mobile */
+        }
+
+        p {
+            line-height: 1.6; 
+            text-align: justify;
+            font-size: 1rem;
+        }
+
+        /* Technical list needs to be easy to read on small screens */
+        ul { 
+            text-align: left; 
+            line-height: 1.6; 
+            padding-left: 15px; 
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
         .spec-source { 
             display: block; 
             font-size: 0.75rem; 
@@ -19,43 +69,74 @@
             font-style: normal; 
             opacity: 0.6;
             line-height: 1.4;
+            text-align: left; /* Better for citations on mobile */
         }
 
-        .btn-group { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
-        .nav-btn { padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-group { 
+            display: flex; 
+            flex-direction: row; /* Default side-by-side */
+            justify-content: center; 
+            gap: 15px; 
+            margin-top: 40px; 
+        }
+
+        .nav-btn { 
+            padding: 12px 20px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            font-size: 0.9rem;
+            flex: 1; /* Makes buttons equal size */
+            max-width: 200px;
+        }
+
         .btn-next { background: var(--accent-orange); color: white; }
         .btn-home { border: 1px solid var(--grayish-blue); color: var(--grayish-blue); }
+
+        /* --- MOBILE SPECIFIC FIXES --- */
+        @media (max-width: 500px) {
+            .history-card {
+                padding: 25px 20px;
+                margin: 20px auto;
+            }
+            h1 { font-size: 1.5rem; }
+            .btn-group { 
+                flex-direction: column; /* Stack buttons on very small phones */
+                align-items: center;
+            }
+            .nav-btn {
+                width: 100%;
+                max-width: none;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="history-card">
         <h1>THE ERIE CANAL</h1>
-        <p style="color: var(--accent-orange); font-weight: bold; margin-bottom: 10px;">"The School of American Engineering"</p>
+        <p style="color: var(--accent-orange); font-weight: bold; margin-bottom: 15px;">"The School of American Engineering"</p>
         
-        <p style="line-height: 1.6; text-align: justify;">
+        <p>
             Before the Erie Canal, the United States had no formal engineering schools. This 363-mile waterway was the classroom where the nation's first civil engineers learned their craft by doing. Completed in 1825, it connected the frontier of the Great Lakes to the Atlantic port of New York City, fundamentally changing the global economy.
         </p>
 
         <h3 style="color: white; margin-top: 30px; border-left: 3px solid var(--accent-orange); padding-left: 15px; text-align: left;">Technical Challenges & Innovation</h3>
-        <ul style="text-align: left; line-height: 1.6; padding-left: 20px;">
-            <li><b>The Elevation Problem:</b> Engineers had to figure out how to lift boats 565 feet over the Niagara Escarpment. They designed a "flight" of five double locks at Lockport—a masterpiece of masonry and hydraulic logic.</li>
-            <li><b>Hydraulic Cement:</b> Ordinary mortar dissolves underwater. Engineer Canvass White discovered a local "rock" that could be ground into a waterproof cement, a discovery that became the foundation for modern American concrete work.</li>
-            <li><b>The Great Embankment:</b> To keep the canal level across deep valleys, they built massive earthen ridges (Irondequoit Creek) that were 70 feet high—stretches of artificial "rivers" in the sky.</li>
+        <ul>
+            <li><b>The Elevation Problem:</b> Engineers designed a "flight" of five double locks at Lockport to lift boats 565 feet.</li>
+            <li><b>Hydraulic Cement:</b> The discovery of waterproof cement became the foundation for modern concrete work.</li>
+            <li><b>The Great Embankment:</b> Massive earthen ridges 70 feet high were built to keep the canal level across deep valleys.</li>
         </ul>
-
-        <span class="tech-insight">
-            This project proved that Civil Engineering isn't just about building; it's about solving the "impossible" through resourcesfulness and constant learning. 
-        </span>
 
         <div class="spec-source">
             <strong>References:</strong><br>
-            American Society of Civil Engineers. (n.d.). <i>Erie Canal</i>. ASCE National Historic Civil Engineering Landmarks.<br>
-            Bernstein, P. L. (2005). <i>Wedding of the Waters: The Erie Canal and the Making of a Great Nation</i>. W.W. Norton & Company.
+            American Society of Civil Engineers. (n.d.). <i>Erie Canal</i>. ASCE Landmarks.<br>
+            Bernstein, P. L. (2005). <i>Wedding of the Waters</i>. W.W. Norton.
         </div>
 
         <div class="btn-group">
             <a href="index.html" class="nav-btn btn-home">BACK TO PORTAL</a>
-            <a href="giza.html" class="nav-btn btn-next">NEXT CASE STUDY →</a>
+            <a href="giza.html" class="nav-btn btn-next">NEXT CASE STUDY</a>
         </div>
     </div>
 </body>
