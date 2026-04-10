@@ -4,53 +4,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interstate Highway | History</title>
     <style>
-        :root { --primary-dark: #020617; --accent-orange: #ff7e5f; --yale-blue: #00356B; --grayish-blue: #94a3b8; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--primary-dark); color: var(--grayish-blue); display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .history-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(148, 163, 184, 0.2); padding: 50px; border-radius: 20px; backdrop-filter: blur(10px); text-align: center; max-width: 700px; margin: 20px; }
-        h1 { color: white; border-bottom: 2px solid var(--accent-orange); display: inline-block; padding-bottom: 10px; }
-        .chef-note { font-style: italic; color: var(--accent-orange); margin-top: 20px; display: block; }
-        
-        /* Subtle citation style to match the CEB1LYANS branding */
+        :root { 
+            --primary-dark: #020617; 
+            --accent-orange: #ff7e5f; 
+            --yale-blue: #00356B; 
+            --grayish-blue: #94a3b8; 
+        }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            background: var(--primary-dark); 
+            color: var(--grayish-blue); 
+            /* Fixes the "cut off" issue on mobile by allowing natural scroll */
+            display: block; 
+            overflow-x: hidden;
+        }
+
+        .history-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid rgba(148, 163, 184, 0.2); 
+            padding: 40px 25px; 
+            border-radius: 20px; 
+            backdrop-filter: blur(10px); 
+            text-align: center; 
+            max-width: 700px; 
+            /* Centering and spacing for mobile/desktop */
+            margin: 40px auto; 
+            width: 90%; 
+            box-sizing: border-box;
+        }
+
+        h1 { 
+            color: white; 
+            border-bottom: 2px solid var(--accent-orange); 
+            display: inline-block; 
+            padding-bottom: 10px; 
+            font-size: 1.8rem;
+        }
+
+        p { 
+            line-height: 1.8; 
+            text-align: justify; 
+            font-size: 1rem;
+        }
+
+        ul { 
+            text-align: left; 
+            line-height: 1.8; 
+            padding-left: 20px; 
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
         .spec-source { 
             display: block; 
             font-size: 0.75rem; 
             color: #64748b; 
             margin-top: 25px; 
-            font-style: normal; 
             opacity: 0.6;
+            text-align: left;
             line-height: 1.4;
         }
 
-        .btn-group { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
-        .nav-btn { padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-group { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-top: 40px; 
+        }
+
+        .nav-btn { 
+            padding: 12px 20px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            font-size: 0.9rem;
+            flex: 1;
+            max-width: 220px;
+            text-align: center;
+        }
+
         .btn-next { background: var(--accent-orange); color: white; }
         .btn-home { border: 1px solid var(--grayish-blue); color: var(--grayish-blue); }
+
+        /* --- MOBILE FIXES --- */
+        @media (max-width: 500px) {
+            .history-card {
+                padding: 25px 20px;
+                margin: 20px auto;
+            }
+            h1 { font-size: 1.3rem; } /* Slightly smaller for long titles */
+            .btn-group { 
+                flex-direction: column; 
+                align-items: center;
+            }
+            .nav-btn {
+                width: 100%;
+                max-width: none;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="history-card">
         <h1>THE INTERSTATE HIGHWAY SYSTEM</h1>
-        <p style="color: var(--accent-orange); font-weight: bold; margin-bottom: 10px;">The Largest Public Works Project in Human History</p>
+        <p style="color: var(--accent-orange); font-weight: bold; margin-bottom: 15px;">The Largest Public Works Project in Human History</p>
         
-        <p style="line-height: 1.8; text-align: justify;">
-            Launched by the Federal Aid Highway Act of 1956, this system revolutionized national mobility and defense. Spanning over 48,000 miles, it serves as the circulatory system of the United States, allowing for high-speed, long-distance travel and the efficient movement of heavy freight across an entire continent.
+        <p>
+            Launched in 1956, this system revolutionized national mobility. Spanning over 48,000 miles, it serves as the circulatory system of the United States, allowing for high-speed travel and efficient freight movement across the continent.
         </p>
 
         <h3 style="color: white; margin-top: 30px; border-left: 3px solid var(--accent-orange); padding-left: 15px; text-align: left;">Technical Challenges & Innovation</h3>
-        <ul style="text-align: left; line-height: 1.8; padding-left: 20px;">
-            <li><b>Structural Pavement Design:</b> Every mile of highway is a precision-engineered multilayer system. It consists of a prepared subgrade, a granular sub-base, and a high-strength pavement surface designed to support a gross vehicle weight of 80,000 lbs.</li>
-            <li><b>Standardized Safety Geometry:</b> Engineers implemented strict design criteria, including 12-foot lane widths, 10-foot right shoulders, and specific vertical clearances to ensure safety at high speeds across varying climates.</li>
-            <li><b>Grade Separation:</b> To eliminate intersections and traffic lights, engineers designed thousands of overpasses and interchanges, showcasing complex structural and transportation modeling.</li>
+        <ul>
+            <li><b>Structural Pavement Design:</b> A precision multilayer system designed to support a gross vehicle weight of 80,000 lbs.</li>
+            <li><b>Standardized Safety Geometry:</b> Implementation of strict 12-foot lane widths and 10-foot right shoulders to ensure safety at high speeds.</li>
+            <li><b>Grade Separation:</b> Thousands of overpasses and interchanges were designed to eliminate intersections and traffic lights entirely.</li>
         </ul>
-
-        <span class="tech-insight">
-            Transportation engineering isn't just about roads; it's about the math of safety, the physics of load-bearing, and the connectivity of societies.
-        </span>
 
         <div class="spec-source">
             <strong>References:</strong><br>
-            Federal Highway Administration. (2022). <i>Eisenhower National System of Interstate and Defense Highways</i>. U.S. Department of Transportation.<br>
-            American Society of Civil Engineers. (n.d.). <i>The Interstate Highway System</i>. ASCE Landmarks Program.
+            Federal Highway Administration. (2022). <i>Eisenhower National System of Interstates</i>.<br>
+            ASCE. (n.d.). <i>The Interstate Highway System</i>.
         </div>
 
         <div class="btn-group">
