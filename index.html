@@ -256,6 +256,64 @@
         text-align: center;
     }
 }
+
+/* ... existing code above ... */
+
+        @media (max-width: 650px) {
+            .profile-flex-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .profile-details {
+                text-align: center;
+            }
+        }
+
+        /* PASTE NO. 1 (CSS) RIGHT HERE! */
+        .container, .contact-footer {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.5s ease, transform 1.2s ease;
+            pointer-events: none; 
+        }
+
+        .hero {
+            height: 100vh; 
+            transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .page-revealed .container, 
+        .page-revealed .contact-footer {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .page-revealed .hero {
+            height: 65vh;
+        }
+
+        .tap-prompt {
+            font-size: 0.9rem;
+            margin-top: 40px;
+            letter-spacing: 2px;
+            color: var(--steel-silver);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+        }
+
+        .page-revealed .tap-prompt {
+            display: none;
+        }
+
+        .person-card {
+            margin-top: 80px !important;
+        }
     </style>
 </head>
 <body>
@@ -263,12 +321,13 @@
     <canvas id="bg-canvas"></canvas>
 
     <section class="hero">
-       <div id="hard-hat-container">
-            <div class="hard-hat-icon"></div>
-        </div>
-        <h1>CEB1LYANS</h1>
-        <p>"BUILDING THE FUTURE, BRIDGING THE WORLD"</p>
-    </section>
+    <div id="hard-hat-container">
+        <div class="hard-hat-icon"></div>
+    </div>
+    <h1>CEB1LYANS</h1>
+    <p>"BUILDING THE FUTURE, BRIDGING THE WORLD"</p>
+    <p class="tap-prompt">TAP ANYWHERE TO ENTER</p> 
+   </section>
 
    <div class="overview-card">
     <div style="margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
@@ -515,6 +574,18 @@
 
 
     <script>
+// This is the "Trigger" that detects the first touch
+function revealEverything() {
+    document.body.classList.add('page-revealed');
+    
+    // Once the page is open, we stop listening for clicks so it doesn't keep resetting
+    window.removeEventListener('click', revealEverything);
+    window.removeEventListener('touchstart', revealEverything);
+}
+
+// Attach the "Ear" to the window to hear the first tap
+window.addEventListener('click', revealEverything);
+window.addEventListener('touchstart', revealEverything);
         // MAIN CARD TOGGLE
         function toggleMainCard(el) {
             el.classList.toggle('is-open');
