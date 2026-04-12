@@ -192,6 +192,69 @@
             .menu-row, .gallery-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2rem; }
         }
+
+        /* Container for the person card */
+.person-card {
+    background: var(--glass-bg);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Flexbox setup for the split layout */
+.profile-flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* Left side styling */
+.profile-details {
+    flex: 2; /* Takes up more space */
+    text-align: left;
+    color: var(--yale-blue);
+}
+
+.advocate-name {
+    color: var(--olive-medium);
+    font-size: 1.8rem;
+    margin: 5px 0;
+}
+
+.university {
+    font-weight: bold;
+    color: var(--olive-light);
+    margin-bottom: 15px;
+}
+
+/* Right side image styling */
+.profile-image-container {
+    flex: 1; /* Takes up less space */
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 200px; /* Adjust size as needed */
+    height: 250px;
+    object-fit: cover; /* Keeps your face from looking stretched */
+    border-radius: 15px;
+    border: 4px solid var(--olive-light);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Mobile Responsive: Stack them on top of each other on small screens */
+@media (max-width: 650px) {
+    .profile-flex-container {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .profile-details {
+        text-align: center;
+    }
+}
     </style>
 </head>
 <body>
@@ -221,7 +284,7 @@
     </p>
 
     <p>
-        It was created to bridge the gap between academic theory and real-world application, providing a centralized resource to explore the specialized branches of our profession. Our primary <b>goal</b> is to foster early technical literacy and professional identity among first-year students. By outlining the core pillars of the field and showcasing global engineering milestones, this page's <b>purpose</b> is to inspire the next generation of engineers to build with excellence, ensuring they understand the massive societal impact of the infrastructure they will one day design and manage.
+        This was created to bridge the gap between academic theory and real-world application, providing a centralized resource to explore the specialized branches of Civil Engineering. Our primary <b>goal</b> is to foster early technical literacy and professional identity among first-year students. By outlining the core pillars of the field and showcasing global engineering milestones, this page's <b>purpose</b> is to inspire the next generation of engineers to build with excellence, ensuring they understand the massive societal impact of the infrastructure they will one day design and manage.
     </p>
 
     <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
@@ -272,7 +335,7 @@
         <div class="card" onclick="toggleMainCard(this)">
             <h2>SPECIALIZATIONS</h2>
             <div class="card-content">
-                <p style="text-align: center;"><i>Get to know each specializations and it's works.</i></p>
+                <p style="text-align: center;"><i>Get to know each specializations and be familiar with some of it's works.</i></p>
 
                 <div class="spec-item">
                     <span class="spec-trigger" onclick="toggleSubItem('s1', event)">Structural Engineering</span>
@@ -408,6 +471,36 @@
 </script>
         </div>
     </div>
+
+    <div class="card person-card">
+    <div class="profile-flex-container">
+        
+        <div class="profile-details">
+            <h2>ADVOCATE</h2>
+            <h3 class="advocate-name">Michelle Ann T. Javellana</h3>
+            <p class="university">Civil Engineering Student | WMSU</p>
+            
+            <p class="bio">
+            	A student who aspires in becoming a civil engineer who don't just create 
+	 	and build infrastructures but an engineer who build with aspirations from 
+            	the nature in mind. Someone who is passionate about integrating sustainable 
+            	practices into modern infrastructure. Focusing on carbon-neutral designs and 
+		urban resilience to create a greener blueprint for future generations.
+
+            <div class="skills-tags">
+                <span class="tag">Sustainable Design</span>
+                <span class="tag">Civil Engineering</span>
+                <span class="tag">Urban Resilience</span>
+            </div>
+        </div>
+
+        <div class="profile-image-container">
+            <img src="profile.jpg" alt="Michelle Ann T. Javellana" class="profile-img">
+        </div>
+
+    </div>
+</div>
+
 
     <footer class="contact-footer">
         <p>Michelle Ann Javellana</p>
